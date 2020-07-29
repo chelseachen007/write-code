@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer>
+      setTimeout(() => {
+        console.log("defer");
+      }, 3000);
+      console.log(new Date(), "defer");
+    </script>
+    <script async>
+      setTimeout(() => {
+        console.log("async");
+      }, 3000);
+      console.log(new Date(), "async");
+    </script>
+
+    <link as="script" href="./proload.js" ref="prefetch" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>hello!world</div>
+  </body>
+</html>

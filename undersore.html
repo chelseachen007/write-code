@@ -4,21 +4,37 @@
  * @Author: Chen
  * @Date: 2020-03-22 13:03:30
  * @LastEditors: Chen
- * @LastEditTime: 2020-03-22 13:59:43
+ * @LastEditTime: 2020-05-19 16:49:42
  -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <script src="./undersore.js">
+  <body>
+    <!-- <script src="./undersore.js">
 
+      
+    </script> -->
+    <script>
+      //   setTimeout(()=>{
+      //   },0)
+    //   var i = 5;
+
+      for (var i = 0; i < 5; i++) {
+        setTimeout(
+          (function () {
+            console.log(new Date(), i);
+          })(i)
+        );
+      }
+      console.log(new Date(), i);
+
+      //  Promise.resolve().then(v=>{
+      //  })
     </script>
-</body>
-
+  </body>
 </html>

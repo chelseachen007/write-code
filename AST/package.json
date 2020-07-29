@@ -1,0 +1,17 @@
+{
+  "name": "ast",
+  "version": "1.0.0",
+  "description": "AST树练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/types": "^7.10.3",
+    "esprima": "^4.0.1",
+    "estraverse": "^5.1.0"
+  }
+}
