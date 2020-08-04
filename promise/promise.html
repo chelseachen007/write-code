@@ -1,0 +1,159 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Chen
+ * @Date: 2020-04-07 15:57:52
+ * @LastEditors: Chen
+ * @LastEditTime: 2020-05-13 11:54:42
+ -->
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1" />
+    <title>promise</title>
+    <style>
+      #container {
+        width: 100%;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        color: #fff;
+        background-color: #444;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <script src="promise.js"></script> -->
+    <script>
+      //   new Promise((resolve) => {
+      //     console.log(55555);
+      //     setTimeout(() => {
+      //       resolve(1);
+      //     }, 500);
+      //   })
+      //     .then((res) => {
+      //       console.log(res);
+      //       return new Promise((resolve) => {
+      //         setTimeout(() => {
+      //           resolve(2);
+      //         }, 500);
+      //       });
+      //     })
+      //     .then((res) => {
+      //       console.log(res);
+      //     });
+
+      Promise.any = (ps) =>
+        new Promise((resolve, reject) => {
+          let cnt = 0;
+          ps.map((p) =>
+            p.then(resolve).catch((err) => ++cnt === ps.length && reject(err))
+          );
+        });
+
+      const resolveTimer = (ms) =>
+        new Promise((r) => setTimeout(() => r(`${ms}$ elapsed`), ms));
+      const rejectTimer = (ms) =>
+        new Promise((_, r) => setTimeout(() => r(`${ms}$elapse`), ms));
+      //   const timer = (ms) => (_, r) => setTimeout(() => r(`${ms}$elapse`), ms);
+      Promise.any([
+        resolveTimer(1000),
+        resolveTimer(2000),
+        resolveTimer(3000),
+      ]).then(console.log);
+      Promise.any([
+        rejectTimer(1000),
+        resolveTimer(2000),
+        resolveTimer(3000),
+      ]).then(console.log);
+      Promise.any([rejectTimer(1000), rejectTimer(2000), rejectTimer(3000)])
+        .then(console.log)
+        .catch(console.log);
+      // setTimeout(() => console.log("d"), 0);
+      // var r = new Promise(function (resolve, reject) {
+      //     resolve()
+      // });
+      // r.then(() => {
+      //     var begin = Date.now();
+      //     while (Date.now() - begin < 1000);
+      //     console.log("c1");
+      //     new Promise(function (resolve, reject) {
+      //         resolve()
+      //     }).then(() => console.log("c2"))
+      // });
+      // void function () {
+      // var a;
+      // console.log(1);
+      // code
+      // }();
+      /**
+       * 请写出两种或两种以上实现方法满足: execute 对应的id按顺序打印
+       * PS: 尝试只修改start函数体
+       *
+       * 输出结果参考:
+       * id 0
+       * id 1
+       * id 2
+       * id 3
+       * id 4
+       */
+
+      // function start(id) {
+      //     execute(id).catch(console.error);
+      // }
+
+      // // 测试代码 (请勿更改):
+
+      // for (let i = 0; i < 5; i++) {
+      //     start(i);
+      // }
+
+      // function sleep() {
+      //     const duration = Math.floor(Math.random() * 500);
+      //     return new Promise(resolve => setTimeout(resolve, duration));
+      // }
+
+      // function execute(id) {
+      //     return sleep().then(() => {
+      //         console.log("id", id);
+      //     });
+      // }
+      function delay(time) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(resolve, time);
+          console.log(time);
+        });
+      }
+
+      // delay(100) // 步骤1
+      //     .then(function STEP2() {
+      //         console.log("step 2 (after 100ms)");
+      //         return delay(200);
+      //     }).then(function STEP3() {
+      //         console.log("step 3 (after another 200ms)");
+      //     }).then(function STEP4() {
+      //         console.log("step 4 (next Job)");
+      //         return delay(50);
+      //     }).then(function STEP5() {
+      //         console.log("step 5 (after another 50ms)");
+      //     })
+
+      [1, 2, 3, 4, 5].reduce(async (lastPromise, i) => {
+        try {
+          await lastPromise;
+          return new Promise((res) => {
+            setTimeout(() => {
+              console.log(i);
+              res();
+            }, 1000 + 500 * i);
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      }, Promise.resolve(0));
+    </script>
+  </body>
+</html>
