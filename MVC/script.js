@@ -27,10 +27,11 @@ class UserView {
   }
 
   render (users) {
+    // todo
+
     while (this.container.firstChild) {
       this.container.removeChild(this.container.firstChild)
     }
-    // todo
     users.forEach((user, index) => {
       const li = document.createElement('li')
       li.textContent = `User Name: ${user.name}, User Number: ${user.name}， User Priority: ${user.priority}`
