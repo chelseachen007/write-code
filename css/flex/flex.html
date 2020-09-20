@@ -1,0 +1,62 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Chen
+ * @Date: 2020-05-13 09:29:02
+ * @LastEditors: Chen
+ * @LastEditTime: 2020-05-13 10:16:42
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+      #div {
+        width: 600px;
+        height: 400px;
+        background-color: yellow;
+        display: flex;
+        /*flex-direction: column-reverse;*/
+        /*flex-wrap: wrap;*/
+        /*justify-content: space-around;*/
+        /*align-items: stretch;*/
+        /*align-content: stretch;*/
+      }
+      #div div {
+        /* width: 100px; */
+        /* height: 100px; */
+        background-color: blue;
+        color: white;
+        font-size: 30px;
+        /*flex-shrink: 0;*/
+      }
+      #div .div1 {
+        /*font-size: 48px;*/
+        /*order: 1;*/
+        /*flex-grow: 1;*/
+        /*flex-shrink: 0;*/
+        /*background-color: red;*/
+        flex: 1 2 500px;
+      }
+      #div .div3 {
+        /*flex-grow: 2;*/
+        background-color: green;
+        /*flex-basis: 200px;*/
+        /* align-self: flex-end; */
+        flex: 2 1 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div">
+      <div class="div1">1</div>
+      <!-- <div class="div2">2</div> -->
+      <div class="div3">3</div>
+      <!-- <div class="div4">4</div> -->
+    </div>
+  </body>
+</html>
+
+源码

@@ -5,13 +5,13 @@ const crypto = require('crypto')
 //解密：Decryption
 
 // base64
-function base64Encrypt(value) {
-    return new Buffer(value).toString("base64");
+function base64Encrypt (value) {
+  return new Buffer(value).toString("base64");
 }
 // console.log(base64Encrypt('测试一下base64'))
 const base64Data = base64Encrypt('测试一下base64')
-function base64Decryption(value) {
-    return new Buffer(value, "base64").toString();
+function base64Decryption (value) {
+  return new Buffer(value, "base64").toString();
 }
 console.log(base64Decryption(base64Data))
 
@@ -23,8 +23,8 @@ var SHA1 = crypto.createHash("sha1"/* sha2 */).update("加密内容ABCD1234").di
 
 // SHA256加密(Hmac方式)
 // HMAC是密钥相关的哈希运算消息认证码，HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。
-const HMAC = function HMACEncrypt(key, value) {
-    return crypto.createHmac('SHA256', key).update(value).digest('base64');
+const HMAC = function HMACEncrypt (key, value) {
+  return crypto.createHmac('SHA256', key).update(value).digest('base64');
 }
 
 //对称加密和非对称加密
@@ -56,13 +56,13 @@ const prikey2 = privatepem2.toString();
 const pubkey2 = publicpem2.toString();
 // 加密方法
 var encrypt = (data, key) => {
-    // 注意，第二个参数是Buffer类型
-    return crypto.publicEncrypt(key, Buffer.from(data));
+  // 注意，第二个参数是Buffer类型
+  return crypto.publicEncrypt(key, Buffer.from(data));
 };
 // 解密方法
 var decrypt = (encrypted, key) => {
-    // 注意，encrypted是Buffer类型
-    return crypto.privateDecrypt(key, encrypted);
+  // 注意，encrypted是Buffer类型
+  return crypto.privateDecrypt(key, encrypted);
 };
 
 const plainText = "我是RSA非对称加密字符串内容";
@@ -76,7 +76,7 @@ console.log("RSA非对称解密结果:%s", decrypted.toString());
 //非对称签名校验
 const privatepem = fs.readFileSync("./privatekey.pem");//私有key【需要 pem 编码的key】server.pem
 const publicpem = fs.readFileSync("./publickey.pem");//公有key【需要 pem 编码的key】cert.pem
-const otherkeys = require("./otherkeys.js");//其它公钥和私钥(测试用，如果用其它的公钥进行校验签名肯定是无法通过的)
+const otherkeys = require("./otherkeys.js.js");//其它公钥和私钥(测试用，如果用其它的公钥进行校验签名肯定是无法通过的)
 
 const prikey = privatepem.toString();
 const pubkey = publicpem.toString();
