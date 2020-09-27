@@ -4,17 +4,17 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const fileWebpackPlugin = require("./myPlugins/file-webpack-plugin.js");
 
 module.exports = {
-  // entry: "./src/index.js",
-  entry: {
-    test: "./src/index.js",
-  },
+  entry: "./src/index.js",
+  // entry: {
+  //   test: "./src/index.js",
+  // },
   output: {
     path: path.resolve(__dirname, "./dist"),
     //hash 构建一次变一次
     //chunkhash 入口文件的变化
     //contenthash 每个文件变化
     //问题：为什么官方推荐js使用chunkhash，css使用contenthash 可以通过修改文件尝试一下！
-    filename: "[name]_[chunkhash:8].js", //test_chunkhas.js
+    filename: "[name]-[hash:8].js", //test_chunkhas.js
   },
   // eval:速度最快，使用eval包裹模块代码，
   // source-map:产生.map文件
@@ -62,10 +62,18 @@ module.exports = {
     modules: ["./node_modules", "./myLoaders"],
   },
   plugins: [new HtmlWebpakcPlugin(), new CleanWebpackPlugin(), new fileWebpackPlugin()],
+
   devServer: {
-    port: 8081,
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: "./dist",
     open: true,
+    port: 8081,
+    proxy: {
+      "/api": {
+        target: "http://localhost:9092/",
+      },
+    },
+    hot: true,
+    hotOnly: true,
   },
   // watch: true,//false
   // watchOptions:{
