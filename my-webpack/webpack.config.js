@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpakcPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const fileWebpackPlugin = require("./myPlugins/file-webpack-plugin.js");
+
 module.exports = {
   // entry: "./src/index.js",
   entry: {
@@ -47,14 +49,19 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ["my-style-loader", "my-css-loader", "my-less-loader"], //多个loader从右向左
+        use: ["my-style-loader", "my-css-loader", {
+          loader: "my-less-loader",
+          options: {
+            name: "scssloader",
+          },
+        }], //多个loader从右向左
       },
     ],
   },
   resolveLoader: {
     modules: ["./node_modules", "./myLoaders"],
   },
-  plugins: [new HtmlWebpakcPlugin(), new CleanWebpackPlugin()],
+  plugins: [new HtmlWebpakcPlugin(), new CleanWebpackPlugin(), new fileWebpackPlugin()],
   devServer: {
     port: 8081,
     contentBase: path.join(__dirname, "dist"),

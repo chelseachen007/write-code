@@ -4,12 +4,13 @@
 // 如何处理异步逻辑
 // 如何处理多个自定义loader
 module.exports = function (source) {
-  //   console.log(this.query);
-  //   console.log(source);
+  console.log(this.query);
+  console.log(source);
   const callback = this.async();
   setTimeout(() => {
-    const result = source.replace("老韩", this.query.name);
+    const result = source.replace("webpack", this.query.name);
     callback(null, result);
   }, 2000);
   //   this.callback(null, result);
 };
+//this.callback(  err: Error | null,  content: string | Buffer,  sourceMap?: SourceMap,  meta?: any );
