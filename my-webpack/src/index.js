@@ -1,12 +1,12 @@
-import img from "./images/tourist.png";
-import './index.less'
+// import img from "./images/tourist.png";
+// import './index.less'
 document.write("hello webpack");
 // console.lo('11')
 
 
-import './hot/csshot'
+// import './hot/csshot'
 
-import './hot/jshot'
+// import './hot/jshot'
 
 // 查看配置的webpack周期
 // const compiler = webpack(config);
