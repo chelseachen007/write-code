@@ -1,5 +1,6 @@
 // ./webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const allModes = [
   'eval',
@@ -39,6 +40,7 @@ module.exports = allModes.map(item => ({
   plugins: [
     new HtmlWebpackPlugin({
       filename: `${item}.html`
-    })
+    }),
+    new CleanWebpackPlugin()
   ]
 }))

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "webpack-dev-server ",
-    "source": "cross-env NODE_ENV=development webpack --progress --config ./webpack.config.source.js"
+    "source": "cross-env NODE_ENV=development webpack --progress --config ./webpack.config.source.js",
+    "tree": "webpack --progress --config ./webpack.config.treeshaking.js"
   },
   "keywords": [],
   "author": "",
@@ -28,5 +29,6 @@
   "dependencies": {
     "cross-env": "^7.0.2",
     "file-loader": "^6.1.0"
-  }
+  },
+  "sideEffects": false
 }
