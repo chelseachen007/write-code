@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpakcPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const fileWebpackPlugin = require("./myPlugins/file-webpack-plugin.js");
+const removeCommentsPlugin = require("./myPlugins/remove-comments-plugin.js");
 
 module.exports = {
   entry: "./src/index.js",
@@ -61,7 +62,7 @@ module.exports = {
   resolveLoader: {
     modules: ["./node_modules", "./myLoaders"],
   },
-  plugins: [new HtmlWebpakcPlugin(), new CleanWebpackPlugin(), new fileWebpackPlugin()],
+  plugins: [new HtmlWebpakcPlugin(), new CleanWebpackPlugin(), new fileWebpackPlugin(), new removeCommentsPlugin()],
 
   devServer: {
     contentBase: "./dist",
