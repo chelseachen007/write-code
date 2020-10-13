@@ -1,7 +1,8 @@
 // 冒泡排序
+// O(n^2)
 import array from "./array";
 //基础版
-function bubbleSort(arr) {
+function bubbleSort (arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] <= arr[j]) {
@@ -13,7 +14,7 @@ function bubbleSort(arr) {
 }
 
 // 进阶版
-function HighBubbleSort(arr) {
+function HighBubbleSort (arr) {
   let flag = true;
   for (let i = 0; i < arr.length && flag; i++) {
     flag = false;
@@ -34,3 +35,4 @@ console.timeEnd("bubbleSort");
 console.time("HighBubbleSort");
 HighBubbleSort(array);
 console.timeEnd("HighBubbleSort");
+

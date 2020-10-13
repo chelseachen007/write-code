@@ -1,3 +1,4 @@
+// 插入排序
 let array = require("./array.json");
 // function insertSort(arr) {
 //   for (var i = 1; i < arr.length; i++) {
@@ -13,7 +14,7 @@ let array = require("./array.json");
 //   }
 //   return arr;
 // }
-function insertSort(arr) {
+function insertSort (arr) {
   for (var i = 1; i < arr.length; i++) {
     let current = arr[i];
     let j = i - 1;
