@@ -25,8 +25,9 @@ function myNew () {
   let child = Object.create(rest.prototype);
   // 2.将this和调用参数传给构造器执行
   let ret = rest.apply(child, arguments);
+  console.log(child, ret)
   // 3.返回第一步的对象
-  return ret instanceof Object ? ret : obj;
+  return ret instanceof Object ? ret : child;
 };
 
 

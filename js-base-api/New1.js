@@ -6,10 +6,10 @@ function Otaku (name, age) {
   this.strength = 60;
   this.age = age;
 
-  return {
-    name: name,
-    habit: 'Games'
-  }
+  // return {
+  //   name: name,
+  //   habit: 'Games'
+  // }
 }
 var myPerson = myNew(Otaku, 'Kevin', '18');
 
@@ -30,5 +30,6 @@ if (!Object.create) {
 function myNew () {
   const rest = [].shift.call(arguments)
   const child = Object.create(rest.prototype)
-  return rest.apply(child, arguments)
+  const obj = rest.apply(child, arguments)
+  return obj instanceof Object ? obj : child
 }
