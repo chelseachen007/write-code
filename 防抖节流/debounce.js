@@ -44,11 +44,10 @@ container.onmousemove = debounce(getUserAction, 1000);
 function debounce (func, wait) {
   let timer
   return function () {
-    let arg = arguments
     let context = this
-    clearTimeout(timer)
+    clearInterval(timer)
     timer = setTimeout(() => {
-      func.apply(context, arg)
-    }, wait)
+      func.apply(context, arguments)
+    }, wait);
   }
 }

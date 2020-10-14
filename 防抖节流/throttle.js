@@ -37,8 +37,8 @@ container.onmousemove = throttle(getUserAction, 1000);
 function throttle (func, wait) {
   let arg, context, timeout
   return function () {
-    context = this
     arg = arguments
+    context = this
     if (!timeout) {
       timeout = setTimeout(() => {
         func.apply(context, arg)
