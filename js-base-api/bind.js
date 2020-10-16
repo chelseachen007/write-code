@@ -10,7 +10,7 @@ Function.prototype.mybind = function (context) {
   }
   var self = this;
   var args = Array.prototype.slice.call(arguments, 1);
-
+  var fNOP = function () { };
   var fbound = function () {
     var bindArgs = Array.prototype.slice.call(arguments);
     // 当作为构造函数时，this 指向实例，self 指向绑定函数，因为下面一句 `fbound.prototype = this.prototype;`，已经修改了 fbound.prototype 为 绑定函数的 prototype，此时结果为 true，当结果为 true 的时候，this 指向实例。
@@ -19,7 +19,8 @@ Function.prototype.mybind = function (context) {
   }
 
   // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承函数的原型中的值
-  fbound.prototype = this.prototype;
+  fNOP.prototype = this.prototype;
+  fbound.prototype = new fNOP();
   return fbound;
 }
 
