@@ -15,39 +15,64 @@ function getUserAction () {
 
 //不绑定this 会指向window
 //需要传参
-// function debounce (func, wait, immediate = true) {
+function debounce (func, wait, immediate = true) {
 
-//   var timeout, result;
+  var timeout, result;
 
-//   return function () {
-//     var context = this;
-//     var args = arguments;
+  let debounced = function () {
+    var context = this;
+    var args = arguments;
 
-//     if (timeout) clearTimeout(timeout);
-//     if (immediate) {
-//       // 如果已经执行过，不再执行
-//       var callNow = !timeout;
-//       timeout = setTimeout(function () {
-//         timeout = null;
-//       }, wait)
-//       if (callNow) result = func.apply(context, args)
-//     } else {
-//       timeout = setTimeout(function () {
-//         func.apply(context, args)
-//       }, wait);
-//     }
-//     return result;
-//   }
-// }
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      // 如果已经执行过，不再执行
+      var callNow = !timeout;
+      timeout = setTimeout(function () {
+        timeout = null;
+      }, wait)
+      if (callNow) result = func.apply(context, args)
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(context, args)
+      }, wait);
+    }
+    return result;
+  }
+  debounced.cancel = function () {
+    clearTimeout(timeout);
+    timeout = null;
+  };
+  return debounced;
+}
 container.onmousemove = debounce(getUserAction, 1000);
 
-function debounce (func, wait) {
-  let timer
+
+// function debounce (func, wait) {
+//   let timer
+//   return function () {
+//     clearInterval(timer)
+//     timer = setTimeout(() => {
+//       func.apply(this, arguments)
+//     }, wait);
+//   }
+// }
+
+function debounce (func, wait, immediate = true) {
+  let timer, result
   return function () {
     let context = this
-    clearInterval(timer)
-    timer = setTimeout(() => {
-      func.apply(context, arguments)
-    }, wait);
+    if (timer) clearInterval(timer)
+    if (immediate) {
+      let callNow = !timeout
+      timer = setTimeout(() => {
+        timer = null
+      })
+      if (callNow) result = func.apply(context, arguments)
+    } else {
+      timer = setTimeout(() => {
+        func.apply(context, arguments)
+      }, wait);
+    }
+    return result
   }
 }
