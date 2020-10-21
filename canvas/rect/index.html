@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+  <script>
+    let drawing = document.getElementById("drawing");
+    // 确保浏览器支持<canvas>
+    if (drawing.getContext) {
+      let context = drawing.getContext("2d");
+      /*
+      * 引自 MDN 文档
+      */
+      // 绘制红色矩形
+      context.fillStyle = "#ff0000";
+      context.fillRect(10, 10, 50, 50);
+      // 绘制半透明蓝色矩形
+      context.fillStyle = "rgba(0,0,255,0.5)";
+      context.fillRect(30, 30, 50, 50);
+      // 在前两个矩形重叠的区域擦除一个矩形区域
+      context.clearRect(40, 40, 10, 10);
+    }
+
+  </script>
+</body>
+
+</html>
