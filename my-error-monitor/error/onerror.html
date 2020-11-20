@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun1() {
+            console.log('1->begin')
+            error
+            console.log('1->end')
+        }
+        window.onerror = (...args) => {
+            console.log('onerror:', args)
+            //返回true 就不会被上抛了。不然控制台中还会看到错误日志。
+            return true
+        }
+
+        setTimeout(() => {
+            fun1()
+        })
+
+    </script>
+</body>
+
+</html>
