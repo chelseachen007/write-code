@@ -17,17 +17,24 @@ module.exports = appInfo => {
 
     // add your middleware config here
     config.middleware = [];
-    config.security = {
-        csrf: {
-            enable: false,
-        },
-    };
     // 定义前端错误日志
     config.customLogger = {
         frontendLogger: {
             file: path.join(appInfo.root, 'logs/frontend.log')
         }
     }
+    config.security = {
+        csrf: {
+            enable: false,
+            ignoreJSON: true
+        },
+        domainWhiteList: '*'
+    };
+
+    config.cors = {
+        origin: '*',
+        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+    };
     // add your user config here
     const userConfig = {
         // myAppName: 'egg',
