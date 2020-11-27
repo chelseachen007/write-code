@@ -3,7 +3,9 @@ export const ErrorHandlerPlugins = {
         Vue.config.errorHandler = (err, vm, info) => {
             let { message, name, script = '', line = 0, column = 0, stack } = err
             console.log('errorHandler:', err)
-            uploadError({ error: err })
+            const events = window.errRecord && window.errRecord.getLastEvent(1) || []
+            console.error(events, 'event')
+            // uploadError({ error: err, events })
         }
     }
 }
