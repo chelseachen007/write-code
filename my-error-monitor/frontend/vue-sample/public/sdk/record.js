@@ -32,7 +32,6 @@ class errRecord {
             recordCanvas: false, //是否记录 canvas 内容
             collectFonts: false	//是否记录页面中的字体文件
         });
-
     }
     emit (event, isCheckout) {
         console.log(this.eventsMatrix)

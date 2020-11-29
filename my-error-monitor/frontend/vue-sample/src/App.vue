@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
 import { record, Replayer } from "rrweb";
 import rrwebPlayer from "rrweb-player";
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
   data() {
     return {};
@@ -29,7 +29,8 @@ export default {
     // 制造一个错误
     // abc();
     // 每 10 秒调用一次 save 方法，避免请求过多
-    // setTimeout(this.saves, 10 * 1000);
+
+    setTimeout(this.saves, 10 * 1000);
   },
 };
 </script>
