@@ -29,38 +29,40 @@ function update (oldNode, newNode) {
     let oldStart
     let oldEnd
     let newEnd
-    // someNode 判断后 都进入 patchVnode
-    //新头和旧头 
-    if (newStart === oldStart) {
-        newStart++
-        oldStart++
-    }
-    //旧尾和新尾  
-    else if (oldEnd === newEnd) {
-        oldEnd--
-        newEnd--
-    }
-    //旧头和新尾
-    else if (oldStart === newEnd) {
-        oldStart++
-        newEnd--
-    }
-    //新头和旧尾
-    else if (newStart === oldEnd) {
-        newStart++
-        oldEnd--
-    }
-    //都找不到 就遍历oldNode 生成一个 {key:index} 的Map
-    let oldKeyToIdx = {}
-    if (oldKeyToIdx[newStart.key]) {
-        // move 这个节点到 oldStart 之前 然后继续遍历
-    }
-    // 如果找不到，或者 key 相同 但内容不相同
-    else {
-        //createElm创建一个新的DOM节点。
+    while (oldStart <= oldEnd && newStart <= newEnd) {
+        // someNode 判断后 都进入 patchVnode
+        //新头和旧头 
+        if (newStart === oldStart) {
+            newStart++
+            oldStart++
+        }
+        //旧尾和新尾  
+        else if (oldEnd === newEnd) {
+            oldEnd--
+            newEnd--
+        }
+        //旧头和新尾
+        else if (oldStart === newEnd) {
+            oldStart++
+            newEnd--
+        }
+        //新头和旧尾
+        else if (newStart === oldEnd) {
+            newStart++
+            oldEnd--
+        }
+        //都找不到 就遍历oldNode 生成一个 {key:index} 的Map
+        let oldKeyToIdx = {}
+        if (oldKeyToIdx[newStart.key]) {
+            // move 这个节点到 oldStart 之前 然后继续遍历
+            newStart++
+        }
+        // 如果找不到，或者 key 相同 但内容不相同
+        else {
+            //createElm创建一个新的DOM节点。
+        }
     }
     //循环完
     // 新的比老的长 addVnodes 多出来的节点
     // 老的比新的长 removeVnodes 多出来的节点
-
 }
