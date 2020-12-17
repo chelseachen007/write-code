@@ -7,14 +7,14 @@ const ast = esprima.parseScript(code);
 // 转换 AST，只会遍历 type 属性
 // traverse 方法中有进入和离开两个钩子函数
 estraverse.traverse(ast, {
-  enter(node) {
-    console.log("enter -> node.type", node.type);
-  },
-  leave(node) {
-    console.log("leave -> node.type", node.type);
-  },
+    enter (node) {
+        console.log("enter -> node.type", node.type);
+    },
+    leave (node) {
+        console.log("leave -> node.type", node.type);
+    },
 });
-//enter -> node.type Program
+// enter -> node.type Program
 // enter -> node.type FunctionDeclaration
 // enter -> node.type Identifier
 // leave -> node.type Identifier
@@ -25,16 +25,16 @@ estraverse.traverse(ast, {
 
 // 转换树
 estraverse.traverse(ast, {
-  // 进入离开修改都是可以的
-  enter(node) {
-    console.log("enter -> node.type", node.type);
-    if (node.type === "Identifier") {
-      node.name = "hello";
-    }
-  },
-  leave(node) {
-    console.log("leave -> node.type", node.type);
-  },
+    // 进入离开修改都是可以的
+    enter (node) {
+        console.log("enter -> node.type", node.type);
+        if (node.type === "Identifier") {
+            node.name = "hello";
+        }
+    },
+    leave (node) {
+        console.log("leave -> node.type", node.type);
+    },
 });
 // 生成新的代码
 const result = escodegen.generate(ast);

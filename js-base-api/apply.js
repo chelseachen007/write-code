@@ -35,3 +35,10 @@ function bar (name, age) {
 
 bar.myapply(foo, ['kevin', 18]);
 
+if (!Object.create) {
+    Object.create = function (o) {
+        function fn () { }
+        fn.prototype = o
+        return new fn()
+    }
+}
