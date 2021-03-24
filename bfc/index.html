@@ -6,15 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .bfc {
+      overflow: hidden;
+      position: absolute;
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body>
-  <span style="margin:15px;background-color:red ;">1</span>
+  <div style="margin:15px;background-color:red ;">1</div>
 
-  <span style="">
-    <span style="margin:15px;background-color: blue;display: inline-block;">2</span>
+  <div class="bfc">
+    <div style="margin:15px;background-color: blue;display: inline-block;">2</div>
 
-  </span>
+  </div>
 </body>
 
 </html>
