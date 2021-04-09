@@ -4,9 +4,12 @@ import "./index.css";
 import App from "./App";
 // import LifeCycle from "./LifeCycle/LifeCycle";
 import LifeCycle from "./LifeCycle/16.3";
+import UseMemo from "./useMemo";
 ReactDOM.render(
-	<React.StrictMode>
+	<UseMemo></UseMemo>,
+	/* 	<React.StrictMode>
 		<LifeCycle />
-	</React.StrictMode>,
-	document.getElementById("root")
+	</React.StrictMode> */ document.getElementById(
+		"root"
+	)
 );
