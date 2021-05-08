@@ -5,8 +5,10 @@ import App from "./App";
 // import LifeCycle from "./LifeCycle/LifeCycle";
 import LifeCycle from "./LifeCycle/16.3";
 import UseMemo from "./useMemo";
+import UseCallback from "./useCallback";
 ReactDOM.render(
-	<UseMemo></UseMemo>,
+	// <UseMemo></UseMemo>,
+	<UseCallback />,
 	/* 	<React.StrictMode>
 		<LifeCycle />
 	</React.StrictMode> */ document.getElementById(
